@@ -1,0 +1,127 @@
+// Ex03_13: Invoice.h
+// Definition of Invoice class that stores an instructor's name.
+#include <string>// program uses C++ standard string class
+using namespace std;
+
+// Invoice class definition
+class Invoice
+{
+public:
+    Invoice(string ,string , unsigned int, unsigned int);// constructor initializes
+    void setPartNumber (string); // function to set the part number
+    string getPartNumber();// function to retrieve the  part number
+    void setPartDescription(string); // function to set the part description
+    string getPartDescription();// function to retrieve the part description
+    void setQuantity(unsigned int); // function to set the quantity of the item being purchased
+    unsigned int getQuantity();// function to retrieve the quantity of the item being purchased
+    void setPrice(unsigned int); // function to set the price per item
+    unsigned int getPrice();// function to retrieve the price per item
+
+    int getInvoiceAmount();// function to multiplies the quantity by the price per item
+
+private:
+    string partNumber; // part number for this Invoice
+    string partDescription; // part description for this Invoice
+    unsigned int quantity; // a quantity of the item being purchased for this Invoice
+    unsigned int price; // a price per item for this Invoice
+};
+
+
+// Ex03_13: Invoice.cpp
+// Member-function definitions for class Invoice.
+#include <iostream>
+using namespace std;
+
+// include definition of class Invoice from Invoice.h
+#include "Invoice.h"
+
+// constructor initializes
+Invoice::Invoice(string number ,string description , unsigned int quantity, unsigned int price)
+{
+    setPartNumber(number);
+    setPartDescription(description);
+    setQuantity(quantity);
+    setPrice(price);
+}// end Invoice constructor
+
+// function to set the part number
+void Invoice::setPartNumber (string number)
+{
+    partNumber=number;
+}// end function setPartNumber
+
+//function to retrieve the  part number
+string Invoice::getPartNumber()
+{
+    return partNumber;
+} // end function getPartNumber
+
+// function to set the part description
+void Invoice::setPartDescription(string description)
+{
+    partDescription = description;
+} // end function setParrtDsecription
+
+// function to retrieve the part description
+string Invoice::getPartDescription()
+{
+    return partDescription;
+} // end function getPartDescription
+
+// function to set the quantity of the item being purchased
+void Invoice::setQuantity(unsigned int number)
+{
+    if(number<0)
+        number =0;
+    quantity = number;
+} //end function setQuantity
+
+// function to retrieve the quantity of the item being purchased
+unsigned int Invoice::getQuantity()
+{
+    return quantity;
+} //end function getQuantity
+
+// function to set the price per item
+void Invoice::setPrice(unsigned int money)
+{
+    if(money < 0)
+        money =0;
+    price = money;
+}// end function setPrice
+
+// function to retrieve the price per item
+unsigned int Invoice::getPrice()
+{
+    return price;
+} // end function getPrice
+
+// function to multiplies the quantity by the price per item
+int Invoice::getInvoiceAmount()
+{
+    return price*quantity;
+}// end function getInvoiceAmount
+
+
+// Ex03_13: InvociceTest.cpp
+// Test program for modified Invoice class.
+#include <iostream>
+
+// include definition of class Invoice from Invoice.h
+using namespace std;
+#include "Invoice.h"
+
+// function main begins program execution
+int main()
+{
+    // create a Invocie object
+
+    Invoice invoice( "003" ,"a Microphone",2,6888);
+
+    // dispaly the message of the invoice
+    cout << "partNumber: " << invoice.getPartNumber() << " partDescription: " << invoice.getPartDescription() << endl;
+    cout<< "quantitiy: " << invoice.getQuantity() << " price per item: " << invoice.getPrice() << endl;
+    cout << "totil: " << invoice.getInvoiceAmount() <<endl << endl;
+
+    return 0;
+}// end main
