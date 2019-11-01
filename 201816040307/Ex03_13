@@ -1,0 +1,102 @@
+#include <iostream>
+#include<string>
+
+using namespace std;
+//Invoice class definition
+class Invoice
+{
+public:
+    //constructor initializes part_number, part_description, price and items
+    explicit Invoice( string str1, string str2, int price1, int item1)
+    {
+        part_number = str1;
+        part_description = str2;
+        price = price1;
+        items = item1;
+    }//end Invoice constructor
+
+    //function to set the part_number
+    void setPartNumber(string str1)
+    {
+        part_number = str1;//store the str1 in the object
+    }//end function setPartNumber
+
+    //function to set the part_description
+    void setPartDescription(string str1)
+    {
+        part_description = str1;//store the str1 in the object
+    }//end function setPartDescription
+
+    //function to set the price
+    void setPrice(int new_price)
+    {
+        price = new_price;//store the price in the object
+    }//end function setPrice
+
+    //function to set the items
+    void setItems(int new_item)
+    {
+        items = new_item;//store the item in the items
+    }//end function setItems
+
+    //function to get part_number
+    string getPartNumber() const
+    {
+        return part_number;//return object's part_number
+    }//end the function getPartNumber
+
+    //function to get part_description
+    string getPartDescription() const
+    {
+        return part_description;//return object's part_description
+    }//end the function getPartDescription
+
+    //function to get price
+    int getPrice() const
+    {
+        return price;//return object's price
+    }//end the function getPrice
+
+    //function to getItems
+    int getItems() const
+    {
+        return items;//return object's items
+    }//end function getItems
+
+    //function to getInvoiceAmount
+    int getInvoiceAmount() const
+    {
+        int amount;//define all the price
+        amount = price * items;
+        if(amount <= 0)
+            amount = 0;//if amount is not positive set it to zero
+        return amount;//return the amount of the object
+    }//end function getInvoiceAmount
+private:
+    string part_number;//a part number
+    string part_description;//a part description
+    int price;//a price per item
+    int items;//a quantity of the item being purchased
+};
+using namespace std;
+
+int main()
+{
+    //crate one Invoice object
+    Invoice item1("007","this is the best one in our store",5,1 );
+
+    //display item1's info
+    cout<<"Item1's part number: "<<item1.getPartNumber()<<endl;
+    cout<<"Item1's part description: "<<item1.getPartDescription()<<endl;
+    cout<<"Item1's price: "<<item1.getPrice()<<endl;
+    cout<<"Item1's items: "<<item1.getItems()<<endl;
+    cout<<"Item1's amount: "<<item1.getInvoiceAmount()<<endl;
+
+    //set item1's items negative
+    cout<<"Set items to negative"<<endl;
+    item1.setItems(-45);
+
+    //display item1's amount
+    cout<<"Item1's new amount : "<<item1.getInvoiceAmount()<<endl;
+
+}//end main
