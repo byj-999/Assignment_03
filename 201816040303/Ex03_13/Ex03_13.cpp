@@ -14,3 +14,5 @@ int main(int argc, char** argv) {
 	<< "\n purchased:\t" << invoice.getPurchased() <<"\n price:\t\t" << invoice.getItem() <<endl;
 	return 0;
 }
+
+
